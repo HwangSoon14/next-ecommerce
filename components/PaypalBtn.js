@@ -29,8 +29,6 @@ const PaypalBtn = (props) => {
                 setLoading(true);
                 patchData(`order/payment/${orderProps._id}`,{paymentId: orderData.payer.payer_id}, token).then(res => {
                   if(res.err) {
-                    console.log(res.headers);
-                    window.location = res.headers.location
                     setLoading(false);
                     return toast.error(res.err);
                   }
