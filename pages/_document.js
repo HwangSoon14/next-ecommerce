@@ -10,6 +10,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+        <meta httpEquiv="Content-Security-Policy" content="default-src gap://ready file://* *; style-src 'self' http://* https://* 'unsafe-inline'; script-src 'self' http://* https://* 'unsafe-inline' 'unsafe-eval'"></meta>
           <meta name="theme-color" content={theme.palette.primary.main} />
           <link rel="shortcut icon" href="/favicon.png" />
           <link
