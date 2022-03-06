@@ -46,7 +46,7 @@ const CartItem = (props) => {
             objectFit: "cover",
           }}
           src={product.images[0].url}
-          alt={product.title}
+          alt={product.name}
         />
       </Box>
       <Box sx={{ ml: "20px" , minWidth: '160px'}}>
@@ -60,7 +60,7 @@ const CartItem = (props) => {
             fontWeight: 500,
           }}
         >
-          {product.title}
+          {product.name}
         </Typography>
         <Typography
           sx={{
