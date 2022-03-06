@@ -25,11 +25,13 @@ const PaypalBtn = (props) => {
     
             onApprove: function(data, actions) {
               return actions.order.capture().then(function(orderData) {
-                console.log(orderData);
+               
                 setLoading(true);
                 patchData(`order/payment/${orderProps._id}`,{paymentId: orderData.payer.payer_id}, token).then(res => {
                   if(res.err) {
-                  setLoading(false);
+                    console.log(res.headers);
+                    window.location = res.headers.location
+                    setLoading(false);
                     return toast.error(res.err);
                   }
                   dispatch(orderPaypal({paid: result.paid ,dateOfPayment: result.dateOfPayment, id:order._id, paymentId: order.payer.payer_id , method: "Paypal" }));
