@@ -125,7 +125,7 @@ export default function Home(props) {
   }, [products])
   
 
-  if(listProduct.length === 0) return <EmptyProduct />
+  // if(listProduct.length === 0) return <EmptyProduct />
   return (
     <div>
       <Head>
@@ -141,12 +141,16 @@ export default function Home(props) {
         DELETE/ALL
       </Button>
         </Box>}
-        <ProductList listProduct={listProduct} handleOpenModal={handleOpenModal} handleCheckItem={handleCheckItem}/>
-        <CustomModal open={visibleModal} setOpen={setVisibleModal} onConfirm={handleDeleteProduct}/>
-        <CustomModal title="This product will be remove , are you sure ?" open={visibleModalDeleteAll} setOpen={setVisibleModalDeleteAll} onConfirm={handleDeleteProductByChecked}/>
+        {(listProduct.length === 0) ? <EmptyProduct /> : 
+        <>
+        <ProductList listProduct={listProduct} handleOpenModal={handleOpenModal} handleCheckItem={handleCheckItem}/> 
         <Stack spacing={2} sx={{display: 'flex' , alignItems: 'center' , justifyContent: 'center' , pb : 2}}>
         <Pagination color="primary" size="large" count={Math.ceil(totalCount / 6)} page={page} onChange={handleChangePage} />
       </Stack>
+        </>
+        }
+        <CustomModal open={visibleModal} setOpen={setVisibleModal} onConfirm={handleDeleteProduct}/>
+        <CustomModal title="This product will be remove , are you sure ?" open={visibleModalDeleteAll} setOpen={setVisibleModalDeleteAll} onConfirm={handleDeleteProductByChecked}/>
         {loading && <LoadingCpn />}
       </Container>
     </div>

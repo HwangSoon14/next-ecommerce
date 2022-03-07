@@ -1,4 +1,4 @@
-import { Button, Drawer, List, ListItem } from '@mui/material';
+import { Badge, Button, Drawer, List, ListItem } from '@mui/material';
 import AppBar from "@mui/material/AppBar";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
@@ -197,12 +197,19 @@ const Navbar = () => {
             xs:'none',
             md: 'flex'
           }, alignItems: 'center'}}>
+            
+            
             <Link href="/cart" passHref>
+            
                <Typography component="span" sx={{display: 'flex' , alignItems: 'center',p: 1 ,fontWeight: 500 , cursor: 'pointer', mx: 1, ':hover': {
                  backgroundColor: 'rgba(1,1,1,0.3)',
                  borderRadius: 2,
                  transition: 'all 0.25s ease'
-               }}}>CART <ShoppingBasketIcon sx={{ml: 1}}/></Typography>
+               }}}>
+               <Badge badgeContent={badge} color="error" >
+               CART <ShoppingBasketIcon sx={{ml: 1}}/>
+               </Badge>
+               </Typography>
             </Link>
             
             {Object.keys(user).length === 0 
